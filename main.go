@@ -42,10 +42,13 @@ func main() {
 
 	mux := http.NewServeMux()
 
+	mux.HandleFunc("POST /v1/users", apiCfg.handlerUserCreate)
+	mux.HandleFunc("GET /v1/users", apiCfg.middlewareAuth(apiCfg.handlerUserGet))
+
+	mux.HandleFunc("POST /v1/feeds", apiCfg.middlewareAuth(apiCfg.handlerFeedCreate))
+
 	mux.HandleFunc("GET /v1/readiness", handlerReadiness)
 	mux.HandleFunc("GET /v1/err", handlerErr)
-	mux.HandleFunc("POST /v1/users", apiCfg.handlerCreateUser)
-	mux.HandleFunc("GET /v1/users", apiCfg.middlewareAuth(apiCfg.handlerGetUser))
 
 	corsMux := middlewareCors(mux)
 
