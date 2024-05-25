@@ -63,7 +63,7 @@ func main() {
 		Handler: corsMux,
 	}
 
-	apiCfg.startScraping(2, 100 * time.Second) ///////////////////////////////////
+	go apiCfg.startScraping(2, 100 * time.Second) ///////////////////////////////////
 
 	log.Printf("Serving on port: %s\n", portString)
 	log.Fatal(srv.ListenAndServe())
