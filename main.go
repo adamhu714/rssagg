@@ -5,6 +5,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"time"
 
 	"github.com/adamhu714/rssagg/internal/database"
 	"github.com/joho/godotenv"
@@ -61,6 +62,8 @@ func main() {
 		Addr:    ":" + portString,
 		Handler: corsMux,
 	}
+
+	apiCfg.startScraping(2, 100 * time.Second) ///////////////////////////////////
 
 	log.Printf("Serving on port: %s\n", portString)
 	log.Fatal(srv.ListenAndServe())
