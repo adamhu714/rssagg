@@ -27,13 +27,7 @@ type RssItem struct {
 	Title       string  `xml:"title"`
 	Link        string  `xml:"link"`
 	Description string  `xml:"description"`
-	Guid        RssGuid `xml:"guid"`
 	PubDate     string  `xml:"pubDate"`
-}
-
-type RssGuid struct {
-	Text        string `xml:",chardata"`
-	IsPermaLink string `xml:"isPermaLink,attr"`
 }
 
 func rssFeedToStruct(url string) (RssFeed, error) {

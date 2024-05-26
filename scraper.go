@@ -3,10 +3,12 @@ package main
 import (
 	"context"
 	"log"
+	"strings"
 	"sync"
 	"time"
 
 	"github.com/adamhu714/rssagg/internal/database"
+	"github.com/google/uuid"
 )
 
 func (apiCfg *apiConfig) startScraping(concurrency int, timeBetweenRequests time.Duration) {
@@ -45,8 +47,20 @@ func (apiCfg *apiConfig) scrapeFeed(wg *sync.WaitGroup, feed database.Feed) {
 	}
 
 	for _, post := range feedData.Channel.Item {
-		log.Printf("Found post: %s\n", post.Title)
+		_, err := apiCfg.DB.CreatePost(context.Background(), database.CreatePostParams{
+			ID: uuid.New(),
+			CreatedAt: time.Now().UTC(),
+			UpdatedAt: time.Now().UTC(),
+			Title: post.Title,
+			Url: post.Link,
+			Description: post.Description,
+			PublishedAt: time.Now().UTC(),
+			FeedID: feed.ID,
+		})
+		if err != nil && !strings.Contains(err.Error(), "duplicate key value violates unique constraint"){
+			log.Printf("error creating post: %s", err.Error())
+		}
 	}
 
-	log.Printf("Feed %s fetched, %d posts found.\n", feed.Name, len(feedData.Channel.Item))
+	log.Printf("Feed %s fetched, %d posts found and added to database.\n", feed.Name, len(feedData.Channel.Item))
 }
