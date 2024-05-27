@@ -53,6 +53,8 @@ func main() {
 	mux.HandleFunc("GET /v1/feed_follows", apiCfg.middlewareAuth(apiCfg.handlerFeedFollowsGet))
 	mux.HandleFunc("DELETE /v1/feed_follows/{feedFollowID}", apiCfg.middlewareAuth(apiCfg.handlerFeedFollowDelete))
 
+	mux.HandleFunc("GET /v1/posts", apiCfg.middlewareAuth(apiCfg.handlerPostsGet))
+
 	mux.HandleFunc("GET /v1/readiness", handlerReadiness)
 	mux.HandleFunc("GET /v1/err", handlerErr)
 
@@ -63,7 +65,7 @@ func main() {
 		Handler: corsMux,
 	}
 
-	go apiCfg.startScraping(2, 100 * time.Second) ///////////////////////////////////
+	go apiCfg.startScraping(2, 100*time.Second)
 
 	log.Printf("Serving on port: %s\n", portString)
 	log.Fatal(srv.ListenAndServe())

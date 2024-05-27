@@ -46,21 +46,27 @@ func (apiCfg *apiConfig) scrapeFeed(wg *sync.WaitGroup, feed database.Feed) {
 		return
 	}
 
+	numCreated := 0
+
 	for _, post := range feedData.Channel.Item {
 		_, err := apiCfg.DB.CreatePost(context.Background(), database.CreatePostParams{
-			ID: uuid.New(),
-			CreatedAt: time.Now().UTC(),
-			UpdatedAt: time.Now().UTC(),
-			Title: post.Title,
-			Url: post.Link,
+			ID:          uuid.New(),
+			CreatedAt:   time.Now().UTC(),
+			UpdatedAt:   time.Now().UTC(),
+			Title:       post.Title,
+			Url:         post.Link,
 			Description: post.Description,
 			PublishedAt: time.Now().UTC(),
-			FeedID: feed.ID,
+			FeedID:      feed.ID,
 		})
-		if err != nil && !strings.Contains(err.Error(), "duplicate key value violates unique constraint"){
-			log.Printf("error creating post: %s", err.Error())
+		if err != nil {
+			if !strings.Contains(err.Error(), "duplicate key value violates unique constraint") {
+				log.Printf("error creating post: %s", err.Error())
+			}
+		} else {
+			numCreated++
 		}
 	}
 
-	log.Printf("Feed %s fetched, %d posts found and added to database.\n", feed.Name, len(feedData.Channel.Item))
+	log.Printf("Feed %s fetched, %d posts found and %d new posts added to database.\n", feed.Name, len(feedData.Channel.Item), numCreated)
 }

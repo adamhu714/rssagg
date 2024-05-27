@@ -32,7 +32,7 @@ type RssItem struct {
 
 func rssFeedToStruct(url string) (RssFeed, error) {
 	httpClient := http.Client{
-		Timeout: 10 * time.Second,
+		Timeout: 15 * time.Second,
 	}
 
 	resp, err := httpClient.Get(url)
