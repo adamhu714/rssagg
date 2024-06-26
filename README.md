@@ -38,7 +38,7 @@ Execute the built binary:
 
 ### /v1/users Endpoint
 
-POST http://localhost:<Port>/v1/users
+POST `http://localhost:<Port>/v1/users`
 
 Creates a new user and returns the user's database entry.
 
@@ -60,7 +60,7 @@ Creates a new user and returns the user's database entry.
 }
 ```
 
-GET http://localhost:PORT/v1/users
+GET `http://localhost:<Port>/v1/users`
 
 Returns a user's database entry.
 
