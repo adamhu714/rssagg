@@ -48,17 +48,17 @@ Creates a new user and returns the user's database entry.
 - JSON Body:
 ```json
 {
-  "name": "{name}"
+  "name": "<User Name>"
 }
 ```
 - JSON Response:
 ```json
 {
-  "id": "{id}",
-  "created_at": "{time}",
-  "updated_at": "{time}",
-  "name": "{name}",
-  "apikey": "{apikey}"
+  "id": "<User ID>",
+  "created_at": "<Timestamp>",
+  "updated_at": "<Timestamp>",
+  "name": "<User Name>",
+  "apikey": "<API Key>"
 }
 ```
 
@@ -75,11 +75,11 @@ Authentication: ApiKey <API Key>
 - JSON Response:
 ```json
 {
-  "id": "{id}",
-  "created_at": "{time}",
-  "updated_at": "{time}",
-  "name": "{name}",
-  "apikey": "{apikey}"
+  "id": "<User ID>",
+  "created_at": "<Timestamp>",
+  "updated_at": "<Timestamp>",
+  "name": "<User Name>",
+  "apikey": "<API Key>"
 }
 ```
 
