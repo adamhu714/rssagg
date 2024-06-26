@@ -69,7 +69,7 @@ Returns a user's database entry.
 
 - Headers: Requires authentication header:
 ```bash
-Authentication: ApiKey {apikey}
+Authentication: ApiKey <API Key>
 ```
 - JSON Body: None
 - JSON Response:
