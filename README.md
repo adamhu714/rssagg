@@ -2,6 +2,7 @@
 
 A RESTful web API that periodically fetches, stores and displays posts from multiple RSS feeds for multiple users.
 
+
 ## Getting Started
 
 ### Prerequisites
@@ -18,7 +19,7 @@ DB_URL=<Postgres Database URL>
 If you're using a local Postgres database, ensure you append your database url with `?sslmode=disable`.
 
 ### Building the Application
-Use the go v1.22+ toolchain to build the executable from the root directory:
+From the root directory, use the Go command-line tool to build the executable:
 
 ```bash
 go build -o rssagg
