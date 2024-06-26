@@ -7,8 +7,10 @@ A restful web api that periodically fetches, stores and displays posts from mult
 ### Create .env file
 Make a `.env` file containing the following environment variables in your project root directory, before building your executable.
 
-```PORT=[PORT]
-DB_URL=[POSTGRES DATABASE URL]```
+```
+PORT=[PORT]
+DB_URL=[POSTGRES DATABASE URL]
+```
 
 If using a local postgres database, make sure you append your database url with `?sslmode=disable`.
 
