@@ -1,43 +1,55 @@
 # RSS Feed Aggregator
 
-A restful web api that periodically fetches, stores and displays posts from multiple rss feeds for multiple users.
+A RESTful web API that periodically fetches, stores and displays posts from multiple RSS feeds for multiple users.
 
-## Build and run executable (Tested on linux)
+## Getting Started
 
-### Create .env file
-Make a `.env` file containing the following environment variables in your project root directory, before building your executable.
+### Prerequisites
+Ensure you have Go v1.22+ installed on your system.
 
+### Environment Variables
+Create a `.env` file in your project root directory with the following environment variables:
+
+```bash
+PORT=<Your Port Number>
+DB_URL=<Postgres Database URL>
 ```
-PORT=[PORT]
-DB_URL=[POSTGRES DATABASE URL]
-```
 
-If using a local postgres database, make sure you append your database url with `?sslmode=disable`.
+If you're using a local Postgres database, ensure you append your database url with `?sslmode=disable`.
 
-### Build the executable
+### Building the Application
 Use the go v1.22+ toolchain to build the executable from the root directory:
 
-`go build -o rssagg`
+```bash
+go build -o rssagg
+```
 
-This will build an executable `rssagg` which can then be run, to start the web api server on your specified port.
+This command generates an executable named `rssagg`, which starts the web API server on the specified port.
+
+### Running the Application
+
+Execute the built binary:
+
+```bash
+./rssagg
+```
 
 ## API Endpoints Usage (local usage examples given)
 
-### /users endpoint
+### /v1/users Endpoint
 
-POST http://localhost:PORT/v1/users
+POST http://localhost:<Port>/v1/users
 
 Creates a new user and returns the user's database entry.
 
-Unauthenticated enpoint.
-Accepts JSON body:
+- Headers: None
+- JSON Body:
 ```json
 {
   "name": "{name}"
 }
 ```
-
-Returns JSON body:
+- JSON Response:
 ```json
 {
   "id": "{id}",
@@ -52,10 +64,12 @@ GET http://localhost:PORT/v1/users
 
 Returns a user's database entry.
 
-Requires authentication header:
-`Authentication: ApiKey {apikey}`
-
-Returns JSON body:
+- Headers: Requires authentication header:
+```bash
+Authentication: ApiKey {apikey}
+```
+- JSON Body: None
+- JSON Response:
 ```json
 {
   "id": "{id}",
