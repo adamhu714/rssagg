@@ -34,7 +34,8 @@ Execute the built binary:
 ./rssagg
 ```
 
-## API Endpoints Usage (local usage examples given)
+
+## API Endpoints
 
 ### /v1/users Endpoint
 
@@ -59,6 +60,7 @@ Creates a new user and returns the user's database entry.
   "apikey": "{apikey}"
 }
 ```
+
 
 GET `http://localhost:<Port>/v1/users`
 
