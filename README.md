@@ -242,4 +242,5 @@ Authentication: ApiKey <API Key>
 ## Demonstration
 Example of /v1/posts response:
 
-![alt text](image-4.png)
+![image](https://github.com/adamhu714/rssagg/assets/105497355/701eedfc-c41c-43ef-a152-bcb0f212e9ab)
+
