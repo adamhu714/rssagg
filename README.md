@@ -38,7 +38,7 @@ Execute the built binary:
 
 ## API Endpoints
 
-### /v1/users Endpoint
+### /v1/users 
 
 **POST** `http://localhost:<Port>/v1/users`
 
@@ -84,7 +84,7 @@ Authentication: APIKey <API Key>
 ```
 
 ---
-### /v1/feeds Endpoint
+### /v1/feeds 
 
 **POST** `http://localhost:<Port>/v1/feeds`
 
@@ -147,7 +147,7 @@ Returns a list of all RSS feed database entries.
 ```
 
 ---
-### /v1/feed_follows Endpoint
+### /v1/feed_follows
 
 **POST** `http://localhost:<Port>/v1/feed_follows`
 
@@ -210,7 +210,7 @@ Authentication: APIKey <API Key>
 - Response Body: None
 
 ---
-### /v1/posts Endpoint
+### /v1/posts
 
 **GET** `http://localhost:<Port>/v1/posts`
 
