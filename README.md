@@ -1,10 +1,22 @@
-# RSS Feed Aggregator
-
+# RSS Feed Aggregator<br>
 A RESTful web API that periodically fetches, stores and displays posts from multiple RSS feeds for multiple users.
 
+[Technology Stack](#technology-stack)<br>
+[Getting Started](#getting-started)<br>
+[API Endpoints](#api-endpoints)<br>
+[Demonstration](#demonstration)
 
-## Getting Started
+## Technology Stack
 
+- **Programming Language**: Golang v1.22 - For developing a robust and efficient web server.
+- **Database**: PostgreSQL - For a production ready relational database.
+- **Migration Tool**: Goose - For automated database schema migrations.
+- **Type-Safe SQL Access**: SQLC - For generating Go packages that provide type-safe access to our database.
+
+The stack is chosen to support robustness and scalability, providing a solid foundation for any future enhancements and maintenance efforts.
+
+
+## Getting Started<br>
 ### Prerequisites
 Ensure you have Go v1.22+ installed on your system.
 
@@ -19,8 +31,7 @@ DB_URL=<Postgres Database URL>
 If you're using a local Postgres database, ensure you append your database url with `?sslmode=disable`.
 
 ### Building the Application
-From the root directory, use the Go command-line tool to build the executable:
-
+From the root directory, use the Go command-line tool to build the executable:<br>
 ```bash
 go build -o rssagg
 ```
@@ -35,15 +46,19 @@ Execute the built binary:
 ./rssagg
 ```
 
-
 ## API Endpoints
+
+[/v1/users](#v1users)<br>
+[/v1/feeds](#v1feeds)<br>
+[/v1/feed_follows](#v1feed_follows)<br>
+[/v1/posts](#v1posts)<br>
+[/v1/readiness](#v1readiness)
 
 ### /v1/users 
 
 **POST** `http://localhost:<Port>/v1/users`
 
-Creates a new user database entry and returns it.
-
+Creates a new user database entry and returns it.<br>
 - Headers: None
 - Request Body:
 ```json
@@ -65,8 +80,7 @@ Creates a new user database entry and returns it.
 
 **GET** `http://localhost:<Port>/v1/users`
 
-Returns a user's database entry.
-
+Returns a user's database entry.<br>
 - Headers: Requires authentication header:
 ```bash
 Authentication: APIKey <API Key>
@@ -237,6 +251,21 @@ Authentication: ApiKey <API Key>
     "feed_id": "<RSS Feed ID>"
   }
 ]
+```
+
+### /v1/readiness
+
+**GET** `http://localhost:<Port>/v1/readiness`
+
+Returns status of the web server.
+
+- Headers: None
+- Request Body: None
+- Response Body: 
+```json
+{
+  "status": "ok"
+}
 ```
 
 ## Demonstration
