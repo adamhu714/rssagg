@@ -1,12 +1,22 @@
 # RSS Feed Aggregator
 A RESTful web API that periodically fetches, stores and displays posts from multiple RSS feeds for multiple users.
 
-[1 Technology Stack](#1-technology-stack)<br>
-[2 Getting Started](#2-getting-started)<br>
-[3 API Endpoints](#3-api-endpoints)<br>
-[4 Demonstration](#4-demonstration)
+## Contents
 
-## 1 Technology Stack
+* [Technology Stack](#technology-stack)<br>
+* [Getting Started](#getting-started)<br>
+  * [Prerequisites](#prerequisites)<br>
+  * [Environment Variables](#environment-variables)<br>
+  * [Building and Running The Application](#building-and-running-the-application)<br>
+* [API Endpoints](#api-endpoints)<br>
+  * [/v1/users](#v1users)<br>
+  * [/v1/feeds](#v1feeds)<br>
+  * [/v1/feed_follows](#v1feed_follows)<br>
+  * [/v1/posts](#v1posts)<br>
+  * [/v1/readiness](#v1readiness)
+* [Demonstration](#demonstration)
+
+## Technology Stack
 
 - **Programming Language**: Golang v1.22 - For developing a robust and efficient web server.
 - **Database**: PostgreSQL - For a production ready relational database.
@@ -16,12 +26,11 @@ A RESTful web API that periodically fetches, stores and displays posts from mult
 The stack is chosen to support robustness and scalability, providing a solid foundation for any future enhancements and maintenance efforts.
 
 
-## 2 Getting Started
-### 2.1 Prerequisites
+## Getting Started
+### Prerequisites
 Ensure you have Go v1.22+ installed on your system.
 
----
-### 2.2 Environment Variables
+### Environment Variables
 Create a `.env` file in your project root directory with the following environment variables:
 
 ```bash
@@ -31,8 +40,7 @@ DB_URL=<Postgres Database URL>
 
 If you're using a local Postgres database, ensure you append your database url with `?sslmode=disable`.
 
----
-### 2.3 Building and Running the Application
+### Building and Running the Application
 From the root directory, use the Go command-line tool to build the executable:<br>
 ```bash
 go build -o rssagg
@@ -47,16 +55,15 @@ Execute the binary and start the server on your port:
 ```
 
 *[Back To Top](#rss-feed-aggregator)* <br>
-## 3 API Endpoints
+## API Endpoints
 
-[3.1 /v1/users](#31-v1users)<br>
-[3.2 /v1/feeds](#32-v1feeds)<br>
-[3.3 /v1/feed_follows](#33-v1feed_follows)<br>
-[3.4 /v1/posts](#34-v1posts)<br>
-[3.5 /v1/readiness](#35-v1readiness)
+* [/v1/users](#v1users)<br>
+* [/v1/feeds](#v1feeds)<br>
+* [/v1/feed_follows](#v1feed_follows)<br>
+* [/v1/posts](#v1posts)<br>
+* [/v1/readiness](#v1readiness)
 
-### 3.1 /v1/users 
----
+### /v1/users 
 **POST** `http://localhost:<Port>/v1/users`
 
 Creates a new user database entry and returns it.<br>
@@ -98,10 +105,9 @@ Authentication: APIKey <API Key>
 }
 ```
 
-*[Back To Top](#rss-feed-aggregator)* &nbsp; *[Back To Endpoints](#3-api-endpoints)*<br>
+*[Back To Top](#rss-feed-aggregator)* &nbsp; *[Back To Endpoints](#api-endpoints)*<br>
 
-### 3.2 /v1/feeds 
----
+### /v1/feeds 
 **POST** `http://localhost:<Port>/v1/feeds`
 
 Creates a new RSS feed database entry and returns it. 
@@ -162,10 +168,9 @@ Returns a list of all RSS feed database entries.
 ]
 ```
 
-*[Back To Top](#rss-feed-aggregator)* &nbsp; *[Back To Endpoints](#3-api-endpoints)*<br>
+*[Back To Top](#rss-feed-aggregator)* &nbsp; *[Back To Endpoints](#api-endpoints)*<br>
 
-### 3.3 /v1/feed_follows
----
+### /v1/feed_follows
 **POST** `http://localhost:<Port>/v1/feed_follows`
 
 Creates an RSS feed follow database entry for a specific user and returns it. 
@@ -226,10 +231,8 @@ Authentication: APIKey <API Key>
 - Request Body: None
 - Response Body: None
 
-*[Back To Top](#rss-feed-aggregator)* &nbsp; *[Back To Endpoints](#3-api-endpoints)*<br>
-
-### 3.4 /v1/posts
----
+*[Back To Top](#rss-feed-aggregator)* &nbsp; *[Back To Endpoints](#api-endpoints)*<br>
+### /v1/posts
 **GET** `http://localhost:<Port>/v1/posts`
 
 Returns a list of the latest RSS feed post database entries for a specific user.
@@ -257,10 +260,8 @@ Authentication: ApiKey <API Key>
 ]
 ```
 
-*[Back To Top](#rss-feed-aggregator)* &nbsp; *[Back To Endpoints](#3-api-endpoints)*<br>
-
-### 3.5 /v1/readiness
----
+*[Back To Top](#rss-feed-aggregator)* &nbsp; *[Back To Endpoints](#api-endpoints)*<br>
+### /v1/readiness
 **GET** `http://localhost:<Port>/v1/readiness`
 
 Returns status of the web server.
@@ -274,10 +275,10 @@ Returns status of the web server.
 }
 ```
 
-*[Back To Top](#rss-feed-aggregator)* &nbsp; *[Back To Endpoints](#3-api-endpoints)*<br>
-## 4 Demonstration
+*[Back To Top](#rss-feed-aggregator)* &nbsp; *[Back To Endpoints](#api-endpoints)*<br>
+## Demonstration
 Example of /v1/posts response:
 
 ![image](https://github.com/adamhu714/rssagg/assets/105497355/701eedfc-c41c-43ef-a152-bcb0f212e9ab)
 
-*[Back To Top](#rss-feed-aggregator)* <br>
+*[Back To Top](#rss-feed-aggregator)*
