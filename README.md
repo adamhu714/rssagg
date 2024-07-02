@@ -18,11 +18,10 @@ The stack is chosen to support robustness and scalability, providing a solid fou
 
 ## 2 Getting Started
 ### 2.1 Prerequisites
----
 Ensure you have Go v1.22+ installed on your system.
 
-### 2.2 Environment Variables
 ---
+### 2.2 Environment Variables
 Create a `.env` file in your project root directory with the following environment variables:
 
 ```bash
@@ -32,8 +31,8 @@ DB_URL=<Postgres Database URL>
 
 If you're using a local Postgres database, ensure you append your database url with `?sslmode=disable`.
 
-### 2.3 Building and Running the Application
 ---
+### 2.3 Building and Running the Application
 From the root directory, use the Go command-line tool to build the executable:<br>
 ```bash
 go build -o rssagg
