@@ -235,7 +235,7 @@ Authentication: APIKey <API Key>
 ### /v1/posts
 **GET** `http://localhost:<Port>/v1/posts`
 
-Returns a list of the latest RSS feed post database entries for a specific user.
+Returns a list of the latest RSS feed post database entries for a specific user.<br>
 Defaults to latest 5 posts. Use optional query parameter `limit` to return a custom number of posts.
 For example: `http://localhost:8080/v1/posts?limit=10`
 
