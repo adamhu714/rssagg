@@ -41,7 +41,7 @@ DB_URL=<Postgres Database URL>
 If you're using a local Postgres database, ensure you append your database url with `?sslmode=disable`.
 
 ### Building and Running the Application
-From the root directory, use the Go command-line tool to build the executable:<br>
+From the project's root directory, use the Go command-line tool to build the executable:<br>
 ```bash
 go build -o rssagg
 ```
